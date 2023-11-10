@@ -16,7 +16,7 @@ func main() {
 func get_servers(context *gin.Context) {
     servers := make(gin.H)
 
-     groups, _ := os.ReadDir("servers")
+     groups, _ := os.ReadDir("/data")
      for i := range groups {
          if !groups[i].IsDir() {
              continue
@@ -24,7 +24,7 @@ func get_servers(context *gin.Context) {
          group := groups[i].Name()
          local := []string{}
 
-         names, _ := os.ReadDir("servers/" + group)
+         names, _ := os.ReadDir("/data/" + group)
          for j := range names {
              if names[j].IsDir() {
                 local = append(local, names[j].Name())
